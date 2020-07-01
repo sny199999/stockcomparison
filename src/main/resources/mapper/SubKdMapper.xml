@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dyh.stockcomparison.mbg.mapper.SubKdMapper">
+   <insert id="addsubk" parameterType="java.util.List">
+       INSERT INTO `ths`.`sub_kd` ( `data`, `current_Amount`,
+       `volume`, `turnover`, `st_id`)
+       VALUES
+       <foreach collection="list" item="SubKd" index="index" separator="," >
+           (#{SubKd.data}, #{SubKd.currentAmount}, #{SubKd.volume},
+           #{SubKd.turnover}, #{SubKd.stId})
+       </foreach>
+   </insert>
+    <select id="selest_id" resultType="java.util.LinkedHashMap">
+        select id ,st_id from sub_kd where st_id=#{st_id}
+    </select>
+    <select id="seletsum" resultType="String">
+       SELECT SUM(a.current_Amount)/10 as ten FROM (SELECT sk.current_Amount FROM sub_kd as sk WHERE st_id=#{st_id}  ORDER BY sk.id DESC
+       LIMIT
+        <if test="da ==10">
+            0,10
+        </if>
+        )a
+    </select>
+</mapper>
