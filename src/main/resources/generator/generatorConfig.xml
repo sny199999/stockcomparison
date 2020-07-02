@@ -36,7 +36,7 @@
 <!--        <javaClientGenerator type="XMLMAPPER" targetPackage="com.cen.jsoup.mbg.mapper"-->
 <!--                             targetProject="src/main/java"/>-->
         <!--生成全部表tableName设为%-->
-        <table tableName="dfcf_eastmoney">
+        <table tableName="Statistical_dfday">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 <!--        <table tableName="shares1">-->

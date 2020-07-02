@@ -97,6 +97,14 @@ public class DfcfKlineJob {
     }
 @RequestMapping("/we")
 @ResponseBody
+/**
+ * @author dyh
+ * @date 2020/7/1 14:31
+ * @param url
+ * @return java.lang.String
+ * @throws 
+ * @since 
+*/
     public String craw(String url) throws IOException {
         url="            http://29.push2his.eastmoney.com/api/qt/stock/kline/get?cb=jQuery112408415444410868154_1592797565790&secid=0.002850&ut=fa5fd1943c7b386f172d6893dbfba10b&fields1=f1%2Cf3&fields2=f51%2Cf53%2Cf56%2Cf57&klt=101&fqt=0&end=20500101&lmt=3&_=1592797565790";
         //使用OkHttp只需要3步
@@ -126,6 +134,14 @@ public class DfcfKlineJob {
         return retText;
 
     }
+    /**
+     * @author dyh
+     * @date 2020/7/1 14:30
+     * @param null
+     * @return 
+     * @throws 
+     * @since 
+    */
     public  String json(String json){
         JSONArray arr    = JSON.parseObject(json).getJSONObject("data").getJSONArray("klines");
         List list=new ArrayList();

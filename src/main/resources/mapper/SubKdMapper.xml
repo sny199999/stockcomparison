@@ -8,16 +8,28 @@
        <foreach collection="list" item="SubKd" index="index" separator="," >
            (#{SubKd.data}, #{SubKd.currentAmount}, #{SubKd.volume},
            #{SubKd.turnover}, #{SubKd.stId})
-       </foreach>
+       </foreach>;
+       <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
+           SELECT Last_INSERT_ID()
+       </selectKey>
    </insert>
     <select id="selest_id" resultType="java.util.LinkedHashMap">
         select id ,st_id from sub_kd where st_id=#{st_id}
     </select>
     <select id="seletsum" resultType="String">
-       SELECT SUM(a.current_Amount)/10 as ten FROM (SELECT sk.current_Amount FROM sub_kd as sk WHERE st_id=#{st_id}  ORDER BY sk.id DESC
+       SELECT SUM(a.current_Amount) as ten FROM (SELECT sk.current_Amount FROM sub_kd as sk WHERE st_id=#{st_id}  ORDER BY sk.id DESC
        LIMIT
         <if test="da ==10">
             0,10
+        </if>
+        <if test="da ==15">
+            0,15
+        </if>
+        <if test="da ==20">
+            0,20
+        </if>
+        <if test="da ==5">
+            0,5
         </if>
         )a
     </select>

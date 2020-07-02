@@ -22,18 +22,21 @@ CREATE TABLE `dfcf_eastmoney` (
                                   `utdate` datetime DEFAULT NULL COMMENT '修改时间',
                                   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `dfcf_eastmoney` (
-                                  `id` int(12) NOT NULL AUTO_INCREMENT,
-                                  `f2` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '最新价',
-                                  `f3` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '涨跌幅',
-                                  `f4` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '涨跌金额',
-                                  `f5` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '成交量手',
-                                  `f12` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '股票代码',
-                                  `f14` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '股票名称',
-                                  `date` datetime DEFAULT NULL COMMENT '第一次创建时间',
-                                  `utdate` datetime DEFAULT NULL COMMENT '修改时间',
-                                  PRIMARY KEY (`id`)
+CREATE TABLE `Statistical_dfday` (
+  `id` int(10) NOT NULL,
+  `five` double(12,2) DEFAULT NULL COMMENT '5',
+  `ten` double(12,2) DEFAULT NULL COMMENT '10tian ',
+  `fifteen` double(12,2) DEFAULT NULL COMMENT '15天',
+  `twenty` double(12,2) DEFAULT NULL,
+  `df_id` int(10) DEFAULT NULL COMMENT 'df关联id',
+  `date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `df_id` (`df_id`),
+  CONSTRAINT `Statistical_dfday_ibfk_1` FOREIGN KEY (`df_id`) REFERENCES `dfcf_eastmoney` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+
 
 
