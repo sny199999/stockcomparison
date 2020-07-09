@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class SubKd implements Serializable {
-    private Long id;
+    private int id;
 
     @ApiModelProperty(value = "日期")
     private Date data;
@@ -21,16 +21,28 @@ public class SubKd implements Serializable {
     private String turnover;
 
     @ApiModelProperty(value = "K线每天对应的主表id")
-    private Long stId;
+    private int stId;
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public int getStId() {
+        return stId;
+    }
+
+    public void setStId(int stId) {
+        this.stId = stId;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Date getData() {
@@ -65,13 +77,7 @@ public class SubKd implements Serializable {
         this.turnover = turnover;
     }
 
-    public Long getStId() {
-        return stId;
-    }
 
-    public void setStId(Long stId) {
-        this.stId = stId;
-    }
 
     @Override
     public String toString() {

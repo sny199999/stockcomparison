@@ -14,6 +14,6 @@ public interface DfcfEastmoneyService {
     DfcfEastmoney selectcode(@Param("code") String code);
     void  updateDfcF(DfcfEastmoney dfcfEastmoney);
     Page<DfcfEastmoney> scode(Integer page, Integer rows);
-    Page<DfcfEastmoney> sall(Integer page, Integer rows);
+    Page sall(Integer page, Integer rows);
 
 }

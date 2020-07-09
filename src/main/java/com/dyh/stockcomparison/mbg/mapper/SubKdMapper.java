@@ -4,6 +4,7 @@ import com.dyh.stockcomparison.mbg.model.SubKd;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,4 +17,6 @@ public interface SubKdMapper {
     Integer addsubk(List<SubKd> list);
     List selest_id(@Param("st_id") Integer stId);
     String seletsum(@Param("st_id") Integer stId, @Param("da") Integer da);
+    SubKd seletor( Integer stId, Date d);
+    void  updatesubk(SubKd subKd);
 }

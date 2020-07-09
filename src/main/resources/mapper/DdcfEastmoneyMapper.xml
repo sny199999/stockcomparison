@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dyh.stockcomparison.mbg.mapper.DfcfEastmoneyMapper">
-   <insert id="addDfcf" parameterType="com.dyh.stockcomparison.mbg.model.DfcfEastmoney">
-       INSERT INTO `dfcf_eastmoney` ( `f2`, `f3`, `f4`, `f5`, `f12`, `f14`, `date`, `utdate`)
+    <insert id="addDfcf" parameterType="com.dyh.stockcomparison.mbg.model.DfcfEastmoney">
+        INSERT INTO `dfcf_eastmoney` ( `f2`, `f3`, `f4`, `f5`, `f12`, `f14`, `date`, `utdate`)
         VALUES (#{f2}, #{f3}, #{f4}, #{f5}, #{f12}, #{f14}, #{date }, #{utdate});
-       <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
-           SELECT Last_INSERT_ID()
-       </selectKey>
-   </insert>
+        <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
+            SELECT Last_INSERT_ID()
+        </selectKey>
+    </insert>
     <select id="selectcode" resultType="com.dyh.stockcomparison.mbg.model.DfcfEastmoney">
         SELECT * FROM dfcf_eastmoney WHERE f12=#{code};
     </select>
@@ -18,8 +18,17 @@
     <select id="scode" resultType="com.dyh.stockcomparison.mbg.model.DfcfEastmoney">
         SELECT id, f12 FROM dfcf_eastmoney
     </select>
-    <select id="sall" resultType="com.dyh.stockcomparison.mbg.model.DfcfEastmoney">
-        SELECT * FROM dfcf_eastmoney
+    <select id="sall" resultType="java.util.HashMap" >
+       SELECT
+	df.f2,df.f3,df.f12,df.f14,
+	CONVERT (df.f2 / st.ten, DECIMAL(10,3)) te,
+	CONVERT (df.f2 / st.five, DECIMAL(10,3)) fv,
+	CONVERT (df.f2 / st.fifteen, DECIMAL(10,3)) fi,
+	st.date
+FROM
+	dfcf_eastmoney AS df
+LEFT JOIN
+	Statistical_dfday AS st ON st.df_id = df.id
     </select>
 
 </mapper>

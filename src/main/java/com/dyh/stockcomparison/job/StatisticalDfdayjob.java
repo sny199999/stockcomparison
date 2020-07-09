@@ -27,11 +27,16 @@ public class StatisticalDfdayjob {
     private SubKService subKService;
     @Autowired
     private StatisticalDfdayService statisticalDfdayService;
+
+    public StatisticalDfdayjob() {
+    }
+    @RequestMapping("/lkk")
     public String select_dfcfid(Integer page, Integer limit){
         List sl=dfcfEastmoneyService.scode(1, 50);
         for (int i = 0; i < sl.size(); i++) {
             DfcfEastmoney st = (DfcfEastmoney) sl.get(i);
             System.out.println(st.getF12()+":"+st.getId());
+            s(String.valueOf(st.getId()));
 
         }
         System.out.println(random_number()+"-*-*-*-*");
@@ -40,7 +45,7 @@ public class StatisticalDfdayjob {
     @RequestMapping("/lk")
     @ResponseBody
     public  Double s(String id){
-
+        System.out.println(id);
        Double five=Double.parseDouble(String.format("%.2f",(Double.parseDouble(subKService.seletsum(145,5)))/5));
        Double ten=Double.parseDouble(String.format("%.2f",(Double.parseDouble(subKService.seletsum(145,10)))/10));
        Double Fifteen=Double.parseDouble(String.format("%.2f",(Double.parseDouble(subKService.seletsum(145,15)))/15));

@@ -81,10 +81,6 @@ public class StatisticalDfday implements Serializable {
         this.date = date;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

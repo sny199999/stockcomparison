@@ -33,32 +33,32 @@ public class tex {
         Map result = new HashMap();
         result.put("code", 0);
         result.put("msg", 0);
-        Page<DfcfEastmoney> p3=dfcfEastmoneyService.sall(8,20);
+        Page<DfcfEastmoney> p3=dfcfEastmoneyService.sall(page,limit);
         result.put("count", p3.getTotal());
+        result.put("data", p3.getResult());
+        System.out.println(p3);
 
-        List sl=new ArrayList();
-        for (int i=0;i<p3.size();i++){
-            System.out.println();
-            String str = JSON.toJSONString(p3.get(i)); //转化成JSON字符串
-            DfcfEastmoney dd = JSON.parseObject(str,DfcfEastmoney.class); //将JSON转化成对象
-//            DfcfEastmoney dd=  p3.get(i);
-//            int s=p3.get(i).getId();
-            String a = subKService.seletsum(dd.getId(),10);
-            System.out.println(a+"----------------");
-            dd.setTen(a);
-//            for (int x=0;x<a.size();x++){
-////                int f=  a.get(x);
-////                dd.setTen(f); ;
-//            }
-
-//dd.setTen(lsum10);
-            sl.addAll(Collections.singleton(dd));
+//        List sl=new ArrayList();
+//        for (int i=0;i<p3.size();i++){
+//            System.out.println();
+//            String str = JSON.toJSONString(p3.get(i)); //转化成JSON字符串
+//            DfcfEastmoney dd = JSON.parseObject(str,DfcfEastmoney.class); //将JSON转化成对象
+////            DfcfEastmoney dd=  p3.get(i);
+////            int s=p3.get(i).getId();
+//            String a = subKService.seletsum(dd.getId(),10);
+//            System.out.println(a+"----------------");
+//            dd.setTen(a);
+////            for (int x=0;x<a.size();x++){
+//////                int f=  a.get(x);
+//////                dd.setTen(f); ;
+////            }
+//
+////dd.setTen(lsum10);
 //            sl.addAll(Collections.singleton(dd));
-//            sl.addAll(lsum10);
-            result.put("data", sl);
+////            sl.addAll(Collections.singleton(dd));
+////            sl.addAll(lsum10);
 
-        }
-        System.out.println(sl);
+
 
 
         return result;

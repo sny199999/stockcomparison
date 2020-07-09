@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,6 +38,17 @@ public class SubKServiceImpl implements SubKService {
     @Override
     public String seletsum(Integer stId, Integer da) {
         return subKdMapper.seletsum(stId,da);
+    }
+
+    @Override
+    public SubKd seletor(Integer stId,  Date d) {
+        SubKd list= subKdMapper.seletor(stId,d);
+        return list;
+    }
+
+    @Override
+    public void updatesubk(SubKd subKd) {
+        subKdMapper.updatesubk(subKd);
     }
 
 

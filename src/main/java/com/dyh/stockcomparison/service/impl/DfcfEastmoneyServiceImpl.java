@@ -40,9 +40,9 @@ public class DfcfEastmoneyServiceImpl implements DfcfEastmoneyService {
     }
 
     @Override
-    public Page<DfcfEastmoney> sall(Integer page, Integer rows) {
+    public Page sall(Integer page, Integer rows) {
         PageHelper.startPage(page,rows);
-        Page<DfcfEastmoney> list=(Page) dfcfEastmoneyMapper.sall();
+        Page list=(Page) dfcfEastmoneyMapper.sall();
         return list;
     }
 

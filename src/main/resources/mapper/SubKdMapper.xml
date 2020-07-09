@@ -17,7 +17,7 @@
         select id ,st_id from sub_kd where st_id=#{st_id}
     </select>
     <select id="seletsum" resultType="String">
-       SELECT SUM(a.current_Amount) as ten FROM (SELECT sk.current_Amount FROM sub_kd as sk WHERE st_id=#{st_id}  ORDER BY sk.id DESC
+       SELECT SUM(a.current_Amount) as ten FROM (SELECT sk.current_Amount FROM sub_kd as sk WHERE st_id=#{st_id}  ORDER BY sk.data DESC
        LIMIT
         <if test="da ==10">
             0,10
@@ -33,4 +33,14 @@
         </if>
         )a
     </select>
+    <select id="seletor" resultType="com.dyh.stockcomparison.mbg.model.SubKd">
+        SELECT id from sub_kd WHERE
+            `data`= #{d} AND st_id= #{stId}
+    </select>
+    <update id="updatesubk" parameterType="com.dyh.stockcomparison.mbg.model.SubKd">
+        UPDATE `sub_kd` SET `data` =#{data}, `current_Amount` =#{currentAmount},
+        `volume` = #{volume}, `turnover` = #{turnover}, `st_id` = #{stId}
+        WHERE `id` = #{id}
+    </update>
+
 </mapper>

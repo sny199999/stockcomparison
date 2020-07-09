@@ -17,6 +17,6 @@ public interface DfcfEastmoneyMapper {
     DfcfEastmoney selectcode(@Param("code") String code);
     void  updateDfcF(DfcfEastmoney dfcfEastmoney);
     List<DfcfEastmoney>  scode();
-    List<DfcfEastmoney>  sall();
+    List  sall();
 
 }
